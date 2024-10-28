@@ -13,15 +13,37 @@ import lombok.*;
 public class NotificationProvider {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private String id;
-    private String providerName; // e.g., SENDGRID, TWILIO
-    private String notificationDeliveryType; // 'email', 'sms', 'whatsapp'
-    private String apiKey;
-    private String username;
-    private String password; // Encrypt in a real-world scenario
-    private String host;
-    private Integer port;
-    private Boolean active;
-    private Long createAt;
-    private Long updateAt;
+    String id;
+
+    /* e.g., SENDGRID, TWILIO */
+    @Column(name = "provider_name")
+    String providerName;
+
+    /* 'email', 'sms', 'whatsapp' */
+    @Column(name = "notification_delivery_type_id")
+    String notificationDeliveryTypeId;
+
+    @Column(name = "api_key")
+    String apiKey;
+
+    @Column(name = "username")
+    String username;
+
+    @Column(name = "password")
+    String password;
+
+    @Column(name = "host")
+    String host;
+
+    @Column(name = "port")
+    Integer port;
+
+    @Column(name = "active")
+    Boolean active;
+
+    @Column(name = "create_at")
+    Long createAt;
+
+    @Column(name = "update_at")
+    Long updateAt;
 }

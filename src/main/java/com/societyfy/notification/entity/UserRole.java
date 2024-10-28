@@ -14,11 +14,18 @@ public class UserRole {
     @GeneratedValue(strategy = GenerationType.UUID)
     String id;
 
-    @Column(unique = true, nullable = false)
+    @Column(name = "role",
+            unique = true,
+            nullable = false)
     @Enumerated(EnumType.STRING)
     Role role;
 
+    @Column(name = "description")
     String description;
+
+    @Column(name = "create_at")
     Long createAt;
+
+    @Column(name = "update_at")
     Long updateAt;
 }

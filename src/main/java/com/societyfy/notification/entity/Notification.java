@@ -1,8 +1,6 @@
 package com.societyfy.notification.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Getter
@@ -13,11 +11,24 @@ import lombok.*;
 @Table(name="notification")
 public class Notification {
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     String id;
+
+    @Column(name = "title")
     String title;
+
+    @Column(name = "message")
     String message;
-    String notificationType;
-    String notificationDeliveryType;
-    long createAt;
-    long updatedAT;
+
+    @Column(name = "notification_type_id")
+    String notificationTypeId;
+
+    @Column(name = "notification_delivery_type_id")
+    String notificationDeliveryTypeId;
+
+    @Column(name = "create_at")
+    Long createAt;
+
+    @Column(name = "update_at")
+    Long updatedAT;
 }

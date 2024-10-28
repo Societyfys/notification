@@ -13,8 +13,16 @@ public class NotificationType {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     String id;
+
+    @Column(name = "type")
     String type;
+
+    @Column(name = "description")
     String description;
+
+    @Column(name = "create_at")
     Long createAt;
+
+    @Column(name = "update_at")
     Long updateAt;
 }

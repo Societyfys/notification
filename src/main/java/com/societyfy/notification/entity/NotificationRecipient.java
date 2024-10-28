@@ -16,14 +16,22 @@ public class NotificationRecipient {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     String id;
+
+    @Column(name = "notification_id")
     String notificationId;
+
+    @Column(name = "user_id")
     String userId;
 
     @Enumerated(EnumType.STRING)
-    @Column(unique = true, nullable = false)
+    @Column(name = "status",
+            nullable = false)
     NotificationRecipientStatus status;
 
+    @Column(name = "sent_at")
     Long sentAt;
+
+    @Column(name = "read_at")
     Long readAt;
 
     public NotificationRecipient(String userId,String notificationId){

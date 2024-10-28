@@ -14,11 +14,25 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     String id;
+
+    @Column(name = "first_name")
     String firstName;
+
+    @Column(name = "last_name")
     String lastName;
+
+    @Column(name = "role_id")
     String roleId;
+
+    @Column(name = "phone_number")
     String phoneNumber;
+
+    @Column(name = "email")
     String email;
+
+    @Column(name = "create_at")
     Long createAt;
+
+    @Column(name = "update_at")
     Long updateAt;
 }

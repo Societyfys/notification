@@ -1,12 +1,11 @@
 package com.societyfy.notification.handler;
 
-import com.societyfy.notification.entity.Notification;
-import com.societyfy.notification.entity.NotificationRecipient;
 import com.societyfy.notification.entity.User;
 
 import java.util.List;
 
 public interface NotificationHandler {
-    void send(List<User> recipients, Notification notification);
-    void send(User recipient,Notification notification);
+    void send(List<User> recipients, String message, String title);
+
+    void send(User recipient, String message, String title);
 }

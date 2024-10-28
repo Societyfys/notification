@@ -19,31 +19,24 @@ import java.util.Properties;
 @RequiredArgsConstructor
 public class EmailNotificationHandler implements NotificationHandler {
     private final ProviderFactory providerFactory;
-    private final NotificationRecipientRepository recipientRepository;
 
     @Override
-    public void send(List<User> recipients, Notification notification) {
+    public void send(List<User> recipients, String message, String title) {
 
     }
 
     @Override
-    public void send(User recipient, Notification notification) {
+    public void send(User recipient, String message, String title) {
         try {
             JavaMailSenderImpl mailSender = getMailSender();
 
             /* Create and send the email */
-            MimeMessage message = mailSender.createMimeMessage();
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress(recipient.getEmail()));
-            message.setSubject(notification.getTitle());
-            message.setContent(notification.getMessage(), "text/html; charset=utf-8");
+            MimeMessage mimeMessage = mailSender.createMimeMessage();
+            mimeMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(recipient.getEmail()));
+            mimeMessage.setSubject(title);
+            mimeMessage.setContent(message, "text/html; charset=utf-8");
 
-            mailSender.send(message);
-
-            recipientRepository.save(
-                    new NotificationRecipient(
-                            recipient.getId(),
-                            notification.getId()));
-
+            mailSender.send(mimeMessage);
         } catch (MessagingException e) {
             System.out.println("Error : " + ExceptionUtils.getStackTrace(e));
         }

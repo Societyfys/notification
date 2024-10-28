@@ -16,9 +16,14 @@ public class NotificationDeliveryType {
     String id;
 
     @Enumerated(EnumType.STRING)
-    @Column(unique = true, nullable = false)
+    @Column(name = "delivery_type",
+            unique = true,
+            nullable = false)
     DeliveryType deliveryType;
 
+    @Column(name = "create_at")
     Long createAt;
-    Long updateAt;
+
+    @Column(name = "update_at")
+    Long updatedAT;
 }
