@@ -20,6 +20,9 @@ public class NotificationRecipient {
     @Column(name = "notification_id")
     String notificationId;
 
+    @Column(name = "message")
+    String message;
+
     @Column(name = "user_id")
     String userId;
 
@@ -33,11 +36,4 @@ public class NotificationRecipient {
 
     @Column(name = "read_at")
     Long readAt;
-
-    public NotificationRecipient(String userId,String notificationId){
-        this.notificationId=notificationId;
-        this.userId=userId;
-        this.status=NotificationRecipientStatus.UNREAD;
-        this.sentAt= Instant.now().toEpochMilli();
-    }
 }

@@ -3,8 +3,8 @@ package com.societyfy.notification.handler;
 import com.societyfy.notification.entity.DeliveryType;
 import com.societyfy.notification.entity.NotificationProvider;
 import com.societyfy.notification.entity.User;
-import com.societyfy.notification.smsProvider.SmsProvider;
-import com.societyfy.notification.smsProvider.SmsProviderFactory;
+import com.societyfy.notification.handler.smsProvider.SmsProvider;
+import com.societyfy.notification.handler.smsProvider.SmsProviderFactory;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +23,7 @@ public class SmsNotificationHandler implements NotificationHandler {
     @Override
     public void send(User recipient, String message, String title) {
         SmsProvider smsProvider = getSmsProvider();
-        smsProvider.sent(recipient.getPhoneNumber(), message);
+        smsProvider.send(recipient.getPhoneNumber(), message);
     }
 
     private SmsProvider getSmsProvider() {

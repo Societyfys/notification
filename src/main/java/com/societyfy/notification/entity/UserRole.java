@@ -9,7 +9,7 @@ import lombok.*;
 @RequiredArgsConstructor
 @Entity
 @Table(name = "user_role")
-public class UserRole {
+public class UserRole extends CommonDateFields{
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     String id;
@@ -22,10 +22,4 @@ public class UserRole {
 
     @Column(name = "description")
     String description;
-
-    @Column(name = "create_at")
-    Long createAt;
-
-    @Column(name = "update_at")
-    Long updateAt;
 }

@@ -9,7 +9,7 @@ import lombok.*;
 @RequiredArgsConstructor
 @Entity
 @Table(name = "notification_type")
-public class NotificationType {
+public class NotificationType extends CommonDateFields{
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     String id;
@@ -19,10 +19,4 @@ public class NotificationType {
 
     @Column(name = "description")
     String description;
-
-    @Column(name = "create_at")
-    Long createAt;
-
-    @Column(name = "update_at")
-    Long updateAt;
 }
