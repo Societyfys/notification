@@ -177,3 +177,7 @@ target
 .gradle
 README.html
 .exercism
+
+### Model and Interface ###
+**/src/main/**/model/
+**/src/main/**/controller/**Api.java

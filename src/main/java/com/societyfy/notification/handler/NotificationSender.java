@@ -11,6 +11,7 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -48,33 +49,33 @@ public class NotificationSender {
     }
 
     private void saveNotificationRecipient(
-            String userId,
-            String notificationId,
+            UUID userId,
+            UUID notificationId,
             String message) {
 
         NotificationRecipient recipient = new NotificationRecipient();
-        recipient.setNotificationId(notificationId);
+        recipient.setNotificationId(notificationId.toString());
         recipient.setStatus(NotificationRecipientStatus.UNREAD);
         recipient.setMessage(message);
         recipient.setSentAt(Instant.now().toEpochMilli());
-        recipient.setUserId(userId);
+        recipient.setUserId(userId.toString());
         recipientRepository.save(recipient);
     }
 
     private void saveNotificationRecipient(
-            List<String> userIds,
-            String notificationId,
+            List<UUID> userIds,
+            UUID notificationId,
             String message) {
 
         List<NotificationRecipient> recipients = new ArrayList<>();
 
-        for (String userId : userIds) {
+        for (UUID userId : userIds) {
             NotificationRecipient recipient = new NotificationRecipient();
-            recipient.setNotificationId(notificationId);
+            recipient.setNotificationId(notificationId.toString());
             recipient.setStatus(NotificationRecipientStatus.UNREAD);
             recipient.setMessage(message);
             recipient.setSentAt(Instant.now().toEpochMilli());
-            recipient.setUserId(userId);
+            recipient.setUserId(userId.toString());
             recipients.add(recipient);
         }
 

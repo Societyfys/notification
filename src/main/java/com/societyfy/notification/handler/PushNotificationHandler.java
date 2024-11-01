@@ -20,7 +20,7 @@ public class PushNotificationHandler implements NotificationHandler {
 
     @Override
     public void send(List<User> recipients, String message, String title) {
-        List<String> userIds = recipients.stream().map(User::getId).toList();
+        List<String> userIds = recipients.stream().map(user -> user.getId().toString()).toList();
         List<String> deviceToekenList = userDeviceRepository
                 .findDeviceTokenByUserIdInAndStatus(userIds, DeviceStatus.ACTIVE);
         this.getPushNotificationProvider()
@@ -30,7 +30,7 @@ public class PushNotificationHandler implements NotificationHandler {
     @Override
     public void send(User recipient, String message, String title) {
         String deviceToken = userDeviceRepository
-                .findDeviceTokenByUserIdAndStatus(recipient.getId(), DeviceStatus.ACTIVE);
+                .findDeviceTokenByUserIdAndStatus(recipient.getId().toString(), DeviceStatus.ACTIVE);
         this.getPushNotificationProvider()
                 .send(deviceToken, title, message);
     }

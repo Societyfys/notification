@@ -8,8 +8,11 @@ info :
 
 
 paths :
-  '/v1/notification':
+  '/v1/notification/{notificationId}':
     $ref : "./notification/notification.yaml"
 
   '/v1/notifications':
     $ref: "./notification/notifications.yaml"
+
+  '/v1/notification/send':
+    $ref: "./notification/sent-notification.yaml"

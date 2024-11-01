@@ -7,8 +7,9 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.UUID;
 
-public interface UserDeviceRepository extends JpaRepository<UserDevice, String> {
+public interface UserDeviceRepository extends JpaRepository<UserDevice, UUID> {
     @Query("select u.deviceToken from UserDevice u " +
             "where u.userId = :userId " +
             "and u.status = :status")

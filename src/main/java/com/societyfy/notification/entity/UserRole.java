@@ -3,6 +3,8 @@ package com.societyfy.notification.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.UUID;
+
 @Getter
 @Setter
 @ToString

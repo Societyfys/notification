@@ -3,6 +3,8 @@ package com.societyfy.notification.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.UUID;
+
 @Getter
 @Setter
 @ToString
@@ -13,7 +15,7 @@ import lombok.*;
 public class UserDevice extends CommonDateFields{
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    String id;
+    UUID id;
 
     @Column(name = "user_id")
     String userId;

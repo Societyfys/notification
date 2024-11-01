@@ -3,6 +3,8 @@ package com.societyfy.notification.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.UUID;
+
 @Getter
 @Setter
 @ToString
@@ -13,7 +15,7 @@ import lombok.*;
 public class NotificationProvider extends CommonDateFields{
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    String id;
+    UUID id;
 
     /* e.g., SENDGRID, TWILIO */
     @Column(name = "provider_name")
@@ -21,7 +23,7 @@ public class NotificationProvider extends CommonDateFields{
 
     /* 'email', 'sms', 'whatsapp' */
     @Column(name = "notification_delivery_type_id")
-    String notificationDeliveryTypeId;
+    UUID notificationDeliveryTypeId;
 
     @Column(name = "api_key")
     String apiKey;

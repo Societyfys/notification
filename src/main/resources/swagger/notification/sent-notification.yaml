@@ -1,21 +1,22 @@
-get:
+post:
   tags :
-    - notification
-  operationId: getNotification
-  summary : Get notification
+    - sentNotification
+  operationId: sentNotification
+  summary : sent notification
 
-  description : Get notification data
+  description : sent notification
 
   parameters :
     - $ref: '../common/common-request-headers.yaml#/Accept'
     - $ref: '../common/common-request-headers.yaml#/CorrelationId'
 
-    - in: path
-      description: Notification ID.
-      name: notificationId
-      required: true
-      schema:
-        type: string
+  requestBody:
+    description: sent notification request
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/SentNotificationRequest'
 
   responses:
     '200':
@@ -25,10 +26,6 @@ get:
           schema :
             type: string
           description: "Helps in getting the flow of the request when we log the correlation id"
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/NotificationModel'
 
 
     '400':
@@ -82,21 +79,27 @@ get:
 
 components:
   schemas :
-    NotificationModel:
-      title: NotificationModel
+    SentNotificationRequest:
+      title: SentNotificationRequest
       type: object
       properties:
-        id:
+        userId:
           type: string
-        title:
+        notificationId:
           type: string
-        message:
-          type: string
-        notificationType:
-          type: string
-        notificationDeliveryType:
-          type: string
-        createAt:
-          type: long
-        updateAt:
-          type: long
+        variables:
+          type: object
+          additionalProperties:
+            type: object
+
+
+#    Variable:
+#      title: Variable
+#      type: object
+#      properties:
+#        name:
+#          type: string
+#        value:
+#          type : object
+
+

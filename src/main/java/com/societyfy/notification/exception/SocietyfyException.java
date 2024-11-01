@@ -11,7 +11,7 @@ import org.springframework.http.HttpStatus;
 @AllArgsConstructor
 @Getter
 public class SocietyfyException extends RuntimeException{
-    private final HttpStatus status;
+    private final HttpStatus statusCode;
     private final String code;
     private final String message;
     private final String correlationId;
