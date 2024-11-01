@@ -8,8 +8,8 @@ import java.time.Instant;
 @Data
 public abstract class CommonDateFields {
     @Column(name = "create_at")
-    Long createAt = Instant.EPOCH.toEpochMilli();
+    Long createAt;
 
     @Column(name = "update_at")
-    Long updatedAT = Instant.EPOCH.toEpochMilli();;
+    Long updatedAt;
 }

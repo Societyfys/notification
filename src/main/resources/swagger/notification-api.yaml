@@ -1,0 +1,15 @@
+openapi: 3.0.0
+
+info :
+  version : 0.0.1
+  title : notification-api
+  description :
+    A RESTFull API for managing notification for societyfy app.
+
+
+paths :
+  '/v1/notification':
+    $ref : "./notification/notification.yaml"
+
+  '/v1/notifications':
+    $ref: "./notification/notifications.yaml"

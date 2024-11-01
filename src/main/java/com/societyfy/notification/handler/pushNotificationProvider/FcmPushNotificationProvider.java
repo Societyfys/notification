@@ -23,7 +23,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class FcmPushNotificationProvider extends PushNotificationProvider {
     @Value("${app.firebase-configuration-file}")
-    private final String firebaseConfigPath;
+    private String firebaseConfigPath;
 
     Logger logger = LoggerFactory.getLogger(FcmPushNotificationProvider.class);
 

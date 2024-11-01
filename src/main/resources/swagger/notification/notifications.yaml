@@ -1,0 +1,85 @@
+get:
+  tags :
+    - notification
+  operationId: getAllNotifications
+  summary : Get all notifications
+
+  description : Get all notifications data
+
+  parameters :
+    - $ref: '../common/common-request-headers.yaml#/Accept'
+    - $ref: '../common/common-request-headers.yaml#/CorrelationId'
+
+  responses:
+    '200':
+      description: Successfully
+      headers :
+        correlationId:
+          schema :
+            type: string
+          description: "Helps in getting the flow of the request when we log the correlation id"
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/GetNotificationsResponse'
+
+
+    '400':
+      description: Invalid Input
+      headers :
+        CorrelationId:
+          schema :
+            type: string
+          description: "Helps in getting the flow of the request when we log the correlation id"
+      content :
+        application/json:
+          schema :
+            $ref: '../common/error-response.yaml'
+
+    '404':
+      description: Resource not Found
+      headers :
+        CorrelationId:
+          schema :
+            type: string
+          description: "Helps in getting the flow of the request when ve log the correlation id"
+      content :
+        application/json:
+          schema :
+            $ref: '../common/error-response.yaml'
+
+
+    '500':
+      description: Internal Server Error
+      headers :
+        CorrelationId:
+          schema :
+            type: string
+          description: "Helps in getting the flow of the request when ve log the correlation id"
+      content :
+        application/json:
+          schema :
+            $ref: '../common/error-response.yaml'
+
+    '503':
+      description: Service request currently not available
+      headers :
+        CorrelationId:
+          schema :
+            type: string
+          description: "Helps in getting the flow of the request when ve log the correlation id"
+      content :
+        application/json:
+          schema :
+            $ref: '../common/error-response.yaml'
+
+components:
+  schemas :
+    GetNotificationsResponse:
+      title : GetNotificationsRequest
+      type : object
+      properties:
+        notifications:
+          type: array
+          items:
+            $ref : './notification.yaml#/components/schemas/NotificationModel'

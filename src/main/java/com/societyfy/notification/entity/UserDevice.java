@@ -15,9 +15,7 @@ public class UserDevice extends CommonDateFields{
     @GeneratedValue(strategy = GenerationType.UUID)
     String id;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id",
-            nullable = false)
+    @Column(name = "user_id")
     String userId;
 
     @Column(name = "device_token",
