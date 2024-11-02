@@ -1,8 +1,12 @@
 package com.societyfy.notification.entity;
 
+import com.societyfy.notification.utils.JsonToMapConverter;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.Type;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 @Getter
@@ -42,4 +46,8 @@ public class NotificationProvider extends CommonDateFields{
 
     @Column(name = "active")
     Boolean active;
+
+    @Convert(converter = JsonToMapConverter.class)
+    @Column(name = "provider_specific_config", columnDefinition = "TEXT")
+    Map<String, Object> providerSpecificConfig = new HashMap<>();
 }

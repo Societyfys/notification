@@ -13,7 +13,7 @@ CREATE TABLE "user" (
    first_name VARCHAR(255),
    last_name VARCHAR(255),
    role_id UUID NOT NULL,
-   phone_number VARCHAR(12),
+   phone_number VARCHAR(15),
    email VARCHAR(255),
    create_at BIGINT DEFAULT (EXTRACT(EPOCH FROM CURRENT_TIMESTAMP) * 1000)::BIGINT,
    update_at BIGINT DEFAULT (EXTRACT(EPOCH FROM CURRENT_TIMESTAMP) * 1000)::BIGINT,
@@ -84,6 +84,7 @@ CREATE TABLE notification_provider (
     host VARCHAR(255),
     port INTEGER,
     active BOOLEAN,
+    provider_specific_config jsonb,
 	create_at BIGINT DEFAULT (EXTRACT(EPOCH FROM CURRENT_TIMESTAMP) * 1000)::BIGINT,
 	update_at BIGINT DEFAULT (EXTRACT(EPOCH FROM CURRENT_TIMESTAMP) * 1000)::BIGINT,
     FOREIGN KEY (notification_delivery_type_id) REFERENCES notification_delivery_type (id)

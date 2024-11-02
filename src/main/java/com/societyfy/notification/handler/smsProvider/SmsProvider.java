@@ -1,7 +1,6 @@
 package com.societyfy.notification.handler.smsProvider;
 
 import com.societyfy.notification.entity.NotificationProvider;
-import com.societyfy.notification.entity.User;
 import com.societyfy.notification.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -15,16 +14,17 @@ public abstract class SmsProvider {
 
     private final UserRepository userRepository;
 
-    public void send(String toPhoneNumber, String message){
-        User admin = userRepository.findAdmin();
-        send(toPhoneNumber, admin.getPhoneNumber(),message);
+    public void send(String toPhoneNumber, String message) {
+        String phoneNumber = provider.getProviderSpecificConfig().get("phone_number").toString();
+        send(toPhoneNumber, phoneNumber, message);
     }
 
-    public void send(List<String> toPhoneNumbers,String message){
-        User admin = userRepository.findAdmin();
-        send(toPhoneNumbers, admin.getPhoneNumber(),message);
+    public void send(List<String> toPhoneNumbers, String message) {
+        String phoneNumber = provider.getProviderSpecificConfig().get("phone_number").toString();
+        send(toPhoneNumbers, phoneNumber, message);
     }
 
-    abstract void send(String toPhoneNumber,String fromPhoneNumber,String message);
+    abstract void send(String toPhoneNumber, String fromPhoneNumber, String message);
+
     abstract void send(List<String> toPhoneNumbers, String fromPhoneNumber, String message);
 }
