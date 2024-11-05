@@ -12,12 +12,21 @@ CREATE TABLE "user" (
    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
    first_name VARCHAR(255),
    last_name VARCHAR(255),
-   role_id UUID NOT NULL,
-   phone_number VARCHAR(15),
+   phone_number VARCHAR(15) NOT NULL UNIQUE,
    email VARCHAR(255),
    create_at BIGINT DEFAULT (EXTRACT(EPOCH FROM CURRENT_TIMESTAMP) * 1000)::BIGINT,
    update_at BIGINT DEFAULT (EXTRACT(EPOCH FROM CURRENT_TIMESTAMP) * 1000)::BIGINT,
    FOREIGN KEY (role_id) REFERENCES "user_role" (id)
+);
+
+CREATE TABLE "user_role_mapping" (
+   id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+   role_id UUID NOT NULL,
+   user_id UUID NOT NULL
+   create_at BIGINT DEFAULT (EXTRACT(EPOCH FROM CURRENT_TIMESTAMP) * 1000)::BIGINT,
+   update_at BIGINT DEFAULT (EXTRACT(EPOCH FROM CURRENT_TIMESTAMP) * 1000)::BIGINT,
+   FOREIGN KEY (role_id) REFERENCES "user_role" (id),
+   FOREIGN KEY (user_id) REFERENCES "user" (id)
 );
 
 CREATE TABLE user_device (
