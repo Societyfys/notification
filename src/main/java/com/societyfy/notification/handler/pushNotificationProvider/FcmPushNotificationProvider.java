@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.List;
 
@@ -31,8 +32,8 @@ public class FcmPushNotificationProvider extends PushNotificationProvider {
     public void firebaseInit() throws IOException {
         try {
             FirebaseOptions options = new FirebaseOptions.Builder()
-                    .setCredentials(GoogleCredentials.fromStream(new ClassPathResource(firebaseConfigPath)
-                            .getInputStream())).build();
+                    .setCredentials(GoogleCredentials.fromStream(new FileInputStream(firebaseConfigPath)))
+                    .build();
             if (FirebaseApp.getApps().isEmpty()) {
                 FirebaseApp.initializeApp(options);
                 logger.info("Firebase application initialized");
