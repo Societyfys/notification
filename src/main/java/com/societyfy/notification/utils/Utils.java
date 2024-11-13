@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 
 import java.util.Map;
-import java.util.UUID;
 
 public interface Utils {
 
@@ -21,5 +20,4 @@ public interface Utils {
         return objectMapper.convertValue(object, new TypeReference<Map<String, Object>>() {
         });
     }
-
 }

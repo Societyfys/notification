@@ -14,7 +14,7 @@ import java.util.UUID;
 public class UserRole extends CommonDateFields{
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    String id;
+    UUID id;
 
     @Column(name = "role",
             unique = true,

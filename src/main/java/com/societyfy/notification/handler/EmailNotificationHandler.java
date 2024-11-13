@@ -1,8 +1,8 @@
 package com.societyfy.notification.handler;
 
-import com.societyfy.notification.entity.*;
-import com.societyfy.notification.repository.NotificationDeliveryTypeRepository;
-import com.societyfy.notification.repository.NotificationRecipientRepository;
+import com.societyfy.notification.entity.DeliveryType;
+import com.societyfy.notification.entity.NotificationProvider;
+import com.societyfy.notification.entity.User;
 import jakarta.mail.Message;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.InternetAddress;
