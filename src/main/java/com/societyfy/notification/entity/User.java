@@ -23,9 +23,6 @@ public class User extends CommonDateFields{
     @Column(name = "last_name")
     String lastName;
 
-    @Column(name = "role_id")
-    UUID roleId;
-
     @Column(name = "phone_number")
     String phoneNumber;
 
