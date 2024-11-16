@@ -27,7 +27,7 @@ WORKDIR /app
 COPY --from=build /app/target/*.jar app.jar
 
 # Copy the Firebase Admin SDK JSON file to the container
-COPY societyfy-firebase-adminsdk.json /app/societyfy-firebase-adminsdk.json
+# COPY societyfy-firebase-adminsdk.json /app/societyfy-firebase-adminsdk.json
 
 # Expose the port your application will run on
 EXPOSE 8080
