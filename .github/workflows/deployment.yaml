@@ -39,5 +39,6 @@ jobs:
         script: |
           cd societyfy
           docker pull ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.event.repository.name }}:${{ github.sha }}
-          docker-compose -f /path/to/docker-compose.yml up -d --no-deps ${{ github.event.repository.name }}
+          cd /home/ubuntu/societyfy
+          docker-compose -f up -d --no-deps ${{ github.event.repository.name }}
           docker image prune -f
