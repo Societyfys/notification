@@ -25,9 +25,7 @@ jobs:
       with:
         context: .
         push: true
-        tags: |
-          ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.event.repository.name }}:latest
-          ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.event.repository.name }}:${{ github.sha }}
+        tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.event.repository.name }}:latest
 
     # Deploy to EC2
     - name: Deploy to EC2
@@ -37,8 +35,7 @@ jobs:
         username: ${{ secrets.EC2_USERNAME }}
         key: ${{ secrets.EC2_SSH_KEY }}
         script: |
-          cd societyfy
-          docker pull ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.event.repository.name }}:${{ github.sha }}
           cd /home/ubuntu/societyfy
-          docker-compose up -d --no-deps ${{ github.event.repository.name }}
+          docker pull ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.event.repository.name }}:latest
+          docker compose up -d --no-deps ${{ github.event.repository.name }}
           docker image prune -f
