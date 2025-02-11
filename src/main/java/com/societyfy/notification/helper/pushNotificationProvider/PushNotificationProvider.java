@@ -1,4 +1,4 @@
-package com.societyfy.notification.handler.pushNotificationProvider;
+package com.societyfy.notification.helper.pushNotificationProvider;
 
 import com.societyfy.notification.entity.NotificationProvider;
 import lombok.Setter;

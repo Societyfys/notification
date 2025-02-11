@@ -1,10 +1,10 @@
-package com.societyfy.notification.handler;
+package com.societyfy.notification.helper;
 
 import com.societyfy.notification.entity.DeliveryType;
 import com.societyfy.notification.entity.NotificationProvider;
 import com.societyfy.notification.entity.User;
-import com.societyfy.notification.handler.smsProvider.SmsProvider;
-import com.societyfy.notification.handler.smsProvider.SmsProviderFactory;
+import com.societyfy.notification.helper.smsProvider.SmsProvider;
+import com.societyfy.notification.helper.smsProvider.SmsProviderFactory;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

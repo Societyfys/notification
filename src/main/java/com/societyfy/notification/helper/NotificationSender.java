@@ -1,4 +1,4 @@
-package com.societyfy.notification.handler;
+package com.societyfy.notification.helper;
 
 import com.societyfy.notification.entity.*;
 import com.societyfy.notification.repository.NotificationRecipientRepository;

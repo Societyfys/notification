@@ -1,7 +1,6 @@
-package com.societyfy.notification.handler.pushNotificationProvider;
+package com.societyfy.notification.helper.pushNotificationProvider;
 
 import com.societyfy.notification.entity.NotificationProvider;
-import com.societyfy.notification.handler.smsProvider.SmsProvider;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;

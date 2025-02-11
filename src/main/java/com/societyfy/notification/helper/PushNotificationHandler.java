@@ -1,11 +1,11 @@
-package com.societyfy.notification.handler;
+package com.societyfy.notification.helper;
 
 import com.societyfy.notification.entity.DeliveryType;
 import com.societyfy.notification.entity.DeviceStatus;
 import com.societyfy.notification.entity.NotificationProvider;
 import com.societyfy.notification.entity.User;
-import com.societyfy.notification.handler.pushNotificationProvider.PushNotificationProvider;
-import com.societyfy.notification.handler.pushNotificationProvider.PushNotificationProviderFactory;
+import com.societyfy.notification.helper.pushNotificationProvider.PushNotificationProvider;
+import com.societyfy.notification.helper.pushNotificationProvider.PushNotificationProviderFactory;
 import com.societyfy.notification.repository.UserDeviceRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

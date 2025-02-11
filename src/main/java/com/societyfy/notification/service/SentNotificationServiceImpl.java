@@ -3,7 +3,7 @@ package com.societyfy.notification.service;
 import com.societyfy.notification.entity.Notification;
 import com.societyfy.notification.entity.User;
 import com.societyfy.notification.exception.SocietyfyException;
-import com.societyfy.notification.handler.NotificationSender;
+import com.societyfy.notification.helper.NotificationSender;
 import com.societyfy.notification.model.SentNotificationRequest;
 import com.societyfy.notification.repository.NotificationRepository;
 import com.societyfy.notification.repository.UserRepository;

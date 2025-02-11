@@ -1,4 +1,4 @@
-package com.societyfy.notification.handler.smsProvider;
+package com.societyfy.notification.helper.smsProvider;
 
 import com.societyfy.notification.entity.NotificationProvider;
 import jakarta.annotation.PostConstruct;
