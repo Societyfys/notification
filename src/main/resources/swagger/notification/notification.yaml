@@ -80,6 +80,172 @@ get:
           schema :
             $ref: '../common/error-response.yaml'
 
+post:
+  tags :
+    - notification
+  operationId: addNotification
+  summary : create new notification
+
+  description : create new notification data
+
+  parameters :
+    - $ref: '../common/common-request-headers.yaml#/Accept'
+    - $ref: '../common/common-request-headers.yaml#/CorrelationId'
+
+  requestBody:
+    description: create new notification body
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/CreateNotification'
+
+  responses:
+    '201':
+      description: Successfully
+      headers :
+        correlationId:
+          schema :
+            type: string
+          description: "Helps in getting the flow of the request when we log the correlation id"
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/NotificationModel'
+
+
+    '400':
+      description: Invalid Input
+      headers :
+        CorrelationId:
+          schema :
+            type: string
+          description: "Helps in getting the flow of the request when we log the correlation id"
+      content :
+        application/json:
+          schema :
+            $ref: '../common/error-response.yaml'
+
+    '404':
+      description: Resource not Found
+      headers :
+        CorrelationId:
+          schema :
+            type: string
+          description: "Helps in getting the flow of the request when ve log the correlation id"
+      content :
+        application/json:
+          schema :
+            $ref: '../common/error-response.yaml'
+
+
+    '500':
+      description: Internal Server Error
+      headers :
+        CorrelationId:
+          schema :
+            type: string
+          description: "Helps in getting the flow of the request when ve log the correlation id"
+      content :
+        application/json:
+          schema :
+            $ref: '../common/error-response.yaml'
+
+    '503':
+      description: Service request currently not available
+      headers :
+        CorrelationId:
+          schema :
+            type: string
+          description: "Helps in getting the flow of the request when ve log the correlation id"
+      content :
+        application/json:
+          schema :
+            $ref: '../common/error-response.yaml'
+
+put:
+  tags :
+    - notification
+  operationId: updateNotification
+  summary : update notification
+
+  description : update notification data
+
+  parameters :
+    - $ref: '../common/common-request-headers.yaml#/Accept'
+    - $ref: '../common/common-request-headers.yaml#/CorrelationId'
+
+  requestBody:
+    description: create new notification body
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/CreateNotification'
+
+  responses:
+    '201':
+      description: Successfully
+      headers :
+        correlationId:
+          schema :
+            type: string
+          description: "Helps in getting the flow of the request when we log the correlation id"
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/NotificationModel'
+
+
+    '400':
+      description: Invalid Input
+      headers :
+        CorrelationId:
+          schema :
+            type: string
+          description: "Helps in getting the flow of the request when we log the correlation id"
+      content :
+        application/json:
+          schema :
+            $ref: '../common/error-response.yaml'
+
+    '404':
+      description: Resource not Found
+      headers :
+        CorrelationId:
+          schema :
+            type: string
+          description: "Helps in getting the flow of the request when ve log the correlation id"
+      content :
+        application/json:
+          schema :
+            $ref: '../common/error-response.yaml'
+
+
+    '500':
+      description: Internal Server Error
+      headers :
+        CorrelationId:
+          schema :
+            type: string
+          description: "Helps in getting the flow of the request when ve log the correlation id"
+      content :
+        application/json:
+          schema :
+            $ref: '../common/error-response.yaml'
+
+    '503':
+      description: Service request currently not available
+      headers :
+        CorrelationId:
+          schema :
+            type: string
+          description: "Helps in getting the flow of the request when ve log the correlation id"
+      content :
+        application/json:
+          schema :
+            $ref: '../common/error-response.yaml'
+
 components:
   schemas :
     NotificationModel:
@@ -90,11 +256,34 @@ components:
           type: string
         title:
           type: string
+        eventType:
+          type: string
         message:
           type: string
         notificationType:
           type: string
         notificationDeliveryType:
+          type: string
+        createAt:
+          type: long
+        updateAt:
+          type: long
+
+    CreateNotification:
+      title: CreateNotification
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        eventType:
+          type: string
+        message:
+          type: string
+        notificationTypeId:
+          type: string
+        notificationDeliveryTypeId:
           type: string
         createAt:
           type: long

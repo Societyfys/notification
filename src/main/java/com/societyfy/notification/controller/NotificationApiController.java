@@ -1,6 +1,7 @@
 package com.societyfy.notification.controller;
 
 import com.societyfy.notification.exception.SocietyfyException;
+import com.societyfy.notification.model.CreateNotification;
 import com.societyfy.notification.model.GetNotificationsResponse;
 import com.societyfy.notification.model.NotificationModel;
 import com.societyfy.notification.service.NotificationService;
@@ -60,6 +61,48 @@ public class NotificationApiController implements NotificationApi {
             throw ex;
         } catch (Exception ex) {
             log.error("Error while get notification : {}", ExceptionUtils.getStackTrace(ex));
+            throw new SocietyfyException(
+                    HttpStatus.INTERNAL_SERVER_ERROR,
+                    NotificationExceptionConstants.INTERNAL_SEVER_ERROR,
+                    env.getRequiredProperty(NotificationExceptionConstants.INTERNAL_SEVER_ERROR),
+                    correlationId);
+        }
+    }
+
+    @Override
+    public ResponseEntity<NotificationModel> addNotification(String accept, String correlationId, CreateNotification body) {
+        if (accept == null || !accept.contains(NotificationConstant.APPLICATION_JSON))
+            return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+        HttpHeaders responseHeaders = HeaderMapper.getHttpHeaders(correlationId);
+        try {
+            NotificationModel notification = notificationService.addNotification(correlationId,body);
+            return new ResponseEntity<>(notification, responseHeaders, HttpStatus.CREATED);
+        } catch (SocietyfyException ex) {
+            throw ex;
+        } catch (Exception ex) {
+            log.error("Error while create notification : {}", ExceptionUtils.getStackTrace(ex));
+            throw new SocietyfyException(
+                    HttpStatus.INTERNAL_SERVER_ERROR,
+                    NotificationExceptionConstants.INTERNAL_SEVER_ERROR,
+                    env.getRequiredProperty(NotificationExceptionConstants.INTERNAL_SEVER_ERROR),
+                    correlationId);
+        }
+    }
+
+    @Override
+    public ResponseEntity<NotificationModel> updateNotification(String accept, String correlationId, CreateNotification body) {
+        if (accept == null || !accept.contains(NotificationConstant.APPLICATION_JSON))
+            return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+        HttpHeaders responseHeaders = HeaderMapper.getHttpHeaders(correlationId);
+        try {
+            NotificationModel notification = notificationService.updateNotification(correlationId,body);
+            return new ResponseEntity<>(notification, responseHeaders, HttpStatus.CREATED);
+        } catch (SocietyfyException ex) {
+            throw ex;
+        } catch (Exception ex) {
+            log.error("Error while update notification : {}", ExceptionUtils.getStackTrace(ex));
             throw new SocietyfyException(
                     HttpStatus.INTERNAL_SERVER_ERROR,
                     NotificationExceptionConstants.INTERNAL_SEVER_ERROR,

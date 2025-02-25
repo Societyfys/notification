@@ -59,7 +59,8 @@ CREATE TABLE notification_type (
 
 CREATE TABLE notification (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-    title VARCHAR(255) UNIQUE NOT NULL,
+    title VARCHAR(255) NOT NULL,
+    event_type VARCHAR(255) UNIQUE NOT NULL,
     message TEXT,
     notification_type_id UUID NOT NULL,
     notification_delivery_type_id UUID NOT NULL,
